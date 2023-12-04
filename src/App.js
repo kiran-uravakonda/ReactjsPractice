@@ -1,37 +1,34 @@
-import './App.css'
-var isLogin=false;
-let isAdmin=true
+import React,{useState} from 'react'
+
 function App() {
+  let[isLogin,setLogin]=useState(false)
   return (
     <div>
-     <Header></Header>
-    
-     { 
-      isAdmin &&  <Admin/>
-     }
+      {isLogin ? (
+        <div>
+          <h1>Welcome Back</h1>
+          <button onClick={Logout}>logout</button>
+        </div>
+      ) : (
+        <div>
+          <h1>Please Login</h1>
+          <button onClick={Login}>login</button>
+        </div>
+      )}
     </div>
   );
+
+  function Login(){
+      setLogin(true)
+  }
+  function Logout(){
+    setLogin(false)
+  }
+  
 }
 
-function Header(){
-  return(
-    <div>
-      <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Contact</li>
-        {
-          isLogin?<li>Logout</li>:<li>Login</li>
-        }
-      </ul>
-    </div>
-  )
-}
 
-function Admin(){
-  return(
-    <h1>Welcome to the Admin page</h1>
-  )
-}
+
+
 
 export default App;
