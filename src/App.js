@@ -1,31 +1,32 @@
-import React ,{useState,useEffect} from 'react'
-function App() {
-  let [update,setUpdate]=useState(0)
- useEffect(()=>{
-  console.log("use effect")
- },[update])
+import React,{useState, useEffect} from 'react'
+import Product from './Components/Add'
+import './App.css'
+function App(){
+  let [data,updateData]=useState([])
+  useEffect(()=>{
+    fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(json=>updateData(json))
+  },[])
 
-//  useEffect(()=>{
-//   console.log("use effect")
-//  },[])
+ if(data.length===0){
+  return <h1>Fetched data is empty</h1>
+ }
+ return (
+          <div className='product-list'>
+          {
+          data.map(item=>{
+            return(
+          
+         <Product {...item}  key={item.id}/>
 
-//  useEffect(()=>{
-//   console.log("use effect")
-//  })
- 
-function Increase(){
-     setUpdate(update+1)
-}
-
-  return (
-    <div>
-      {console.log("functional compont")}
-     <h1>Functional Component</h1>
-     <h1>value is:{update}</h1>
-     <button onClick={Increase}>click</button>
-    </div>
-  );
-
+         
+          
+            )
+           })
+          }
+          </div>
+         )
   }
 
 
