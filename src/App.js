@@ -1,8 +1,10 @@
 import Home from './Components/Home';
 import About from './Components/about';
 import Contact from './Components/contact';
-import User,{Profile,Orders} from './Components/user'
+import User from './Components/user'
 import { BrowserRouter , Routes, Route,Link} from "react-router-dom";
+
+
 function App() {
   
   return (
@@ -13,10 +15,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/contact' element={<Contact/>}/>
-        <Route path='/user' element={<User/>}>
-        <Route path='profile' element={<Profile/>}/>
-        <Route path='orders' element={<Orders/>}/>
-        </Route>
+        <Route path='/user/:id/:name' element={<User/>}/>
        </Routes>
        </BrowserRouter>
     </div>
@@ -42,7 +41,7 @@ function Linked(){
      
         </li>
         <li>
-      <Link to='/user'>User</Link>
+      <Link to='/user/500/kiran?posts=200'>User</Link>
         </li>
       </ul>
     </div>
