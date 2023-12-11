@@ -1,34 +1,52 @@
-import React,{useState, useEffect} from 'react'
-import Product from './Components/Add'
-import './App.css'
-function App(){
-  let [data,updateData]=useState([])
-  useEffect(()=>{
-    fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then(json=>updateData(json))
-  },[])
+import Home from './Components/Home';
+import About from './Components/about';
+import Contact from './Components/contact';
+import User,{Profile,Orders} from './Components/user'
+import { BrowserRouter , Routes, Route,Link} from "react-router-dom";
+function App() {
+  
+  return (
+    <div>
+       <BrowserRouter>
+       <Linked/>
+       <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/about' element={<About/>}/>
+        <Route path='/contact' element={<Contact/>}/>
+        <Route path='/user' element={<User/>}>
+        <Route path='profile' element={<Profile/>}/>
+        <Route path='orders' element={<Orders/>}/>
+        </Route>
+       </Routes>
+       </BrowserRouter>
+    </div>
+  )
+}
 
- if(data.length===0){
-  return <h1>Fetched data is empty</h1>
- }
- return (
-          <div className='product-list'>
-          {
-          data.map(item=>{
-            return(
-          
-         <Product {...item}  key={item.id}/>
+function Linked(){
+  return(
+    <div>
+      <ul>
+        <li>
+        <Link to='/'>Home</Link>
+        </li>
+        <li>
+  
+      <Link to='/about'>About</Link>
+     
+        </li>
 
-         
-          
-            )
-           })
-          }
-          </div>
-         )
-  }
-
-
+        <li>
+        
+      <Link to='/contact'>Contact</Link>
+     
+        </li>
+        <li>
+      <Link to='/user'>User</Link>
+        </li>
+      </ul>
+    </div>
+  )
+}
 
 export default App;
