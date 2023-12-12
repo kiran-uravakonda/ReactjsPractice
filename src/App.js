@@ -1,51 +1,51 @@
-import Home from './Components/Home';
-import About from './Components/about';
-import Contact from './Components/contact';
-import User from './Components/user'
-import { BrowserRouter , Routes, Route,Link} from "react-router-dom";
-
-
+import { useEffect, useRef } from "react";
+import { useState } from "react";
 function App() {
-  
+  const [val,setValue]=useState("");
+
+  const count=useRef(0);
+  // console.log(count)
+
+  useEffect(()=>{
+    count.current=count.current+1;
+  })
+  // let res=useRef(0)  // variable declared  with useRef
+//  console.log(res)
+
+// let a=100 // variable declared  without useRef
   return (
     <div>
-       <BrowserRouter>
-       <Linked/>
-       <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/about' element={<About/>}/>
-        <Route path='/contact' element={<Contact/>}/>
-        <Route path='/user/:id/:name' element={<User/>}/>
-       </Routes>
-       </BrowserRouter>
+
+           
+      <input type="text" value={val} onChange={(event)=>{
+         setValue(event.target.value);
+         
+      }} />
+
+      <h1>count is:{count.current}</h1>
+
+
+
+
+
+     {/* <h1>useRef value is:{res.current}</h1>
+     <h1>a value is:{a}</h1>
+     <button onClick={()=>{
+      res.current=res.current+1;
+       console.log(res.current)
+       a=a+10
+       console.log(a)
+       setValue(val+1)
+     }}>Add</button> */}
+      
+      {/* <h1 ref={res}>kiran</h1>
+      <button onClick={()=>{
+        console.log(res.current)
+        console.log(res)
+        res.current.innerHTML="ReactJs"
+
+        }}>Submit</button> */}
     </div>
   )
 }
-
-function Linked(){
-  return(
-    <div>
-      <ul>
-        <li>
-        <Link to='/'>Home</Link>
-        </li>
-        <li>
-  
-      <Link to='/about'>About</Link>
-     
-        </li>
-
-        <li>
-        
-      <Link to='/contact'>Contact</Link>
-     
-        </li>
-        <li>
-      <Link to='/user/500/kiran?posts=200'>User</Link>
-        </li>
-      </ul>
-    </div>
-  )
-}
-
 export default App;
