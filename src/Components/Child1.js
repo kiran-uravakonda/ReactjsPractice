@@ -1,9 +1,9 @@
 import Child2 from './Child2'
-function Child1({fname,lname}){
+function Child1(){
     return(
       <div>
         <h1>child1 component </h1>
-        <Child2 fname={fname} lname={lname}/>
+        <Child2/>
       </div>
     )
   }

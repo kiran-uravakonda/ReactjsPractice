@@ -1,11 +1,15 @@
+import { createContext } from "react";
 import Child1 from './Components/Child1'
+export let context=createContext()
+console.log(context.Provider)
 function App(){
-  let firstName="kiran";
-  let lastName="uravakonda";
-return(
+  var val="kiran"
+  return(
   <div>
-    <h1>parent component</h1>
-    <Child1 fname={firstName} lname={lastName}/>
+    <context.Provider value={val}>
+      <h1>parent component</h1>
+      <Child1/>
+    </context.Provider>
   </div>
 )
 }
