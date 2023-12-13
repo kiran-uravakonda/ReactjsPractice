@@ -1,17 +1,11 @@
-import useCustomApi from "./utlis";
-function App() {
-  var val=useCustomApi('https://fakestoreapi.com/products?limit=5')
+import Child1 from './Components/Child1'
+function App(){
+  let firstName="kiran";
+  let lastName="uravakonda";
 return(
   <div>
-    <h1>Custom Hooks</h1>
-    {
-      val.map((ele)=>{
-  return(
-    <h1 key={ele.id}> {ele.title}</h1>
-  )
-      })
-    }
-    
+    <h1>parent component</h1>
+    <Child1 fname={firstName} lname={lastName}/>
   </div>
 )
 }
