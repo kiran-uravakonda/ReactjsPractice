@@ -38,11 +38,3 @@
 }
 
 
-ul{
-  display:flex;
-  gap: 20px;
-  padding: 20px;
-  list-style-type: none;
-  background-color: blue;
-  color: #fff;
-}

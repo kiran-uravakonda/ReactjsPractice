@@ -1,8 +1,15 @@
+import { useState } from "react";
+
 function Child(props){
-  // console.log(props.val)
+let[val,setVal]=useState("")
   return(
     <>
-   <h1>{props.val("reactjs")}</h1>
+  <input type="text" value={val} onChange={(e)=>{
+       setVal(e.target.value);
+  }}/>
+  <button onClick={()=>{
+     props.add(val)
+  }}>submit</button>
     </>
   )
 }

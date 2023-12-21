@@ -1,15 +1,24 @@
 import './App.css'
 import Child from './Components/Add'
+import {useState} from 'react'
 function App() {
+  let[data,setData]=useState(['list1','list2'])
 
-  let data=(item)=>{
-      return(
-        <h1>{item}</h1>
-      )
+  let test=(item)=>{
+    setData([...data,item])
   }
-  return(
-<Child val={data}/>
-  )
+ return(
+  <>
+  <Child  add={test} />
+ <ul>
+    {
+      data.map((t)=>(
+        <li key={t}>{t}</li>
+      ))
+    }
+ </ul>
+  </>
+ )
 }
 
 export default App;
