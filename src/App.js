@@ -1,36 +1,14 @@
 import './App.css'
-var isLogin=false;
-let isAdmin=true
+import Child from './Components/Add'
 function App() {
-  return (
-    <div>
-     <Header></Header>
-    
-     { 
-      isAdmin &&  <Admin/>
-     }
-    </div>
-  );
-}
 
-function Header(){
+  let data=(item)=>{
+      return(
+        <h1>{item}</h1>
+      )
+  }
   return(
-    <div>
-      <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Contact</li>
-        {
-          isLogin?<li>Logout</li>:<li>Login</li>
-        }
-      </ul>
-    </div>
-  )
-}
-
-function Admin(){
-  return(
-    <h1>Welcome to the Admin page</h1>
+<Child val={data}/>
   )
 }
 
